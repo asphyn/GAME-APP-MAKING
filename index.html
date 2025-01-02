@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Avatar Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f3f4f6;
+    }
+
+    #game-container {
+      position: relative;
+      width: 90%;
+      max-width: 400px;
+      height: 500px;
+      background: #ffffff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #avatar {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: auto;
+    }
+
+    .food {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: auto;
+      cursor: pointer;
+      animation: drop 3s infinite ease-in-out;
+    }
+
+    @keyframes drop {
+      from {
+        top: 0;
+      }
+      to {
+        top: 90%;
+      }
+    }
+
+    #score-board {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #start-button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #start-button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div id="score-board">Score: 0</div>
+    <img id="avatar" src="https://via.placeholder.com/80" alt="Avatar">
+    <img class="food" src="https://via.placeholder.com/40" alt="Food">
+    <button id="start-button">Start Game</button>
+  </div>
+
+  <script>
+    const startButton = document.getElementById('start-button');
+    const scoreBoard = document.getElementById('score-board');
+    let score = 0;
+
+    startButton.addEventListener('click', () => {
+      score = 0;
+      scoreBoard.textContent = `Score: ${score}`;
+      alert('Game Started!');
+    });
+
+    document.querySelector('.food').addEventListener('click', () => {
+      score += 10;
+      scoreBoard.textContent = `Score: ${score}`;
+    });
+  </script>
+</body>
+</html>
